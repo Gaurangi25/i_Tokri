@@ -1,110 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seller Sign Up - iTokri</title>
-    <link rel="stylesheet" href="signup.css">
-</head>
-<body>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <h1>iTokri</h1>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="contact.html">Contact us</a></li>
-                <li><a href="help.html">Help</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <h1>iTokri</h1>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="help.html">Help</a></li>
+        </ul>
+      </nav>
     </header>
 
     <div class="container">
-        <div class="signup-box">
-            <h2>Create a Seller Account</h2>
+      <div class="signup-box">
+        <h2>Create a Seller Account</h2>
 
-            <!-- Google Signup Option -->
-            <div class="google-signup">
-             <a href="#" class="google-btn">
-              <img src="googleLogo.png" alt="Google Logo"> 
-              Sign up with Google
-             </a>
-            </div>
-
-
-            <p>Or sign up using your email:</p>
-
-            <form id="signupForm" action="dashboard.html" method="POST">
-                <div class="input-field">
-                    <label for="name">Full Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="input-field">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-field">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="input-field">
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-                </div>
-                <div class="input-field">
-                    <button type="submit">Sign Up</button>
-                </div>
-            </form>
+        <!-- Google Signup Option -->
+        <div class="google-signup">
+          <a href="#" class="google-btn">
+            <img src="googleLogo.png" alt="Google Logo" />
+            Sign up with Google
+          </a>
         </div>
+
+        <p>Or sign up using your email:</p>
+
+        <form id="signupForm" action="dashboard.html" method="POST">
+          <div class="input-field">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="input-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="input-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="input-field">
+            <label for="confirm-password">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+            />
+          </div>
+          <div class="input-field">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
 
+    <!-- Include Firebase SDKs before your custom script -->
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-auth-compat.js"></script>
     <script src="signup.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-<script>
-   // Your web app's Firebase configuration (replace with your actual Firebase config)
-   const firebaseConfig = {
-       apiKey: "AIzaSyCTUbiddbhypN0e9QWXI1Y4oSUduiig5AY",
-  authDomain: "i-tokri-cdf2e.firebaseapp.com",
-  projectId: "i-tokri-cdf2e",
-  storageBucket: "i-tokri-cdf2e.appspot.com",
-  messagingSenderId: "670631798208",
-  appId: "1:670631798208:web:57413269ccc7ae9b8e9425",
-  measurementId: "G-JLJ0ZSPXC0"
-   };
-
-   // Initialize Firebase
-   firebase.initializeApp(firebaseConfig);
-
-// Initialize FirebaseAuth
-const auth = firebase.auth();
-
-// Google Authentication function
-function signInWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider)
-        .then((result) => {
-            const user = result.user;
-            console.log('User signed in:', user);
-
-            // Redirect to dashboard or any page after successful login
-            window.location.href = 'dashboard.html'; 
-        })
-        .catch((error) => {
-            console.log('Error during sign-in:', error);
-        });
-}
-
-// Add event listener to Google sign-up button
-document.getElementById('google-signin').addEventListener('click', function(e) {
-    e.preventDefault();  // Prevent default link behavior
-    signInWithGoogle();  // Call Google Sign-In function
-});
-
-</script>
-
-</body>
-
+  </body>
 </html>
